@@ -54,7 +54,6 @@ public class WordsFragment extends Fragment {
     private boolean undoAction;
     private DividerItemDecoration dividerItemDecoration;
 
-
     public WordsFragment() {
         // Required empty public constructor
         //ahking, 显示菜单栏
@@ -293,6 +292,19 @@ public class WordsFragment extends Fragment {
             }
         });
 
+        FloatingActionButton floatingAddAllActionButton = requireActivity().findViewById(R.id.floatingActionAddAllButton);
+        floatingAddAllActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addAllWords();
+            }
+        });
+    }
+
+    //一次性添加一批单词
+    private void addAllWords() {
+        Word word = new Word("今天的天气是阴天", "今日（きょう）の天気（てんき）は曇（くも）りです", "曇（くも）り");
+        wordViewModel.insertWords(word);
     }
 
 }
